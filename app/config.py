@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     # Application
     app_name: str = "AI Scrum Master"
     app_version: str = "1.0.0"
+    app_url: str = Field(default="http://localhost:8000", env="APP_URL")
     debug: bool = Field(default=False, env="DEBUG")
     
     # Database
