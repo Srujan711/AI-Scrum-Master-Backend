@@ -28,7 +28,7 @@ When analyzing stories:
 - Identify missing or vague requirements  
 - Suggest story splitting for large items
 - Flag potential technical dependencies
-- Assess business value indicators
+- Assess business value indicator
 
 Provide specific, actionable recommendations."""
     
