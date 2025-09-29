@@ -91,11 +91,14 @@ class LLMProvider:
                 response.raise_for_status()
                 data = response.json()
 
+                response_text = data.get("response", "")
                 return {
-                    "response": data.get("response", ""),
+                    "content": response_text,  # Use "content" for consistency
+                    "response": response_text,  # Keep for backward compatibility
                     "tokens_used": data.get("eval_count", 0) + data.get("prompt_eval_count", 0),
                     "model": model,
-                    "provider": "ollama"
+                    "provider": "ollama",
+                    "cost_usd": 0.0  # Ollama is free
                 }
         except Exception as e:
             logger.error(f"Ollama API error: {e}")
