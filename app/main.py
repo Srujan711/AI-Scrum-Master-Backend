@@ -6,7 +6,8 @@ import uvicorn
 import logging
 
 from .config import get_settings
-from .database import engine, Base
+from .database import engine
+from .models.base import Base
 from .api.v1.router import api_router
 from .core.auth import get_current_user
 from .utils.logging import setup_logging

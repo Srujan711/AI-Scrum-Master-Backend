@@ -5,8 +5,9 @@ from .base import BaseModel
 
 class User(BaseModel):
     __tablename__ = "users"
-    
+
     email = Column(String, unique=True, index=True, nullable=False)
+    password_hash = Column(String, nullable=False)
     full_name = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
     is_scrum_master = Column(Boolean, default=False)

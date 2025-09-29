@@ -1,10 +1,15 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
 from typing import List, Optional
 import os
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=False,
+        extra="ignore"
+    )
     # Application
     app_name: str = "AI Scrum Master"
     app_version: str = "1.0.0"
@@ -77,10 +82,6 @@ class Settings(BaseSettings):
     # AI Agent Configuration
     max_agent_iterations: int = Field(default=10, env="MAX_AGENT_ITERATIONS")
     agent_timeout: int = Field(default=300, env="AGENT_TIMEOUT")  # seconds
-    
-    class Config:
-        env_file = ".env"
-        case_sensitive = False
 
 
 # Global settings instance

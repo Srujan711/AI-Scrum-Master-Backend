@@ -34,16 +34,26 @@ class AIEngine:
     
     def _initialize_vector_store(self):
         """Initialize vector database connection"""
+        # Skip vector store initialization if not configured
+        if not settings.vector_db_provider or not settings.pinecone_api_key:
+            logger.info("Vector database not configured - skipping initialization")
+            return
+
         if settings.vector_db_provider == "pinecone":
-            import pinecone
-            pinecone.init(
-                api_key=settings.pinecone_api_key,
-                environment=settings.pinecone_environment
-            )
-            self.vector_store = Pinecone.from_existing_index(
-                index_name=settings.pinecone_index_name,
-                embedding=self.embeddings
-            )
+            try:
+                import pinecone
+                pinecone.init(
+                    api_key=settings.pinecone_api_key,
+                    environment=settings.pinecone_environment
+                )
+                self.vector_store = Pinecone.from_existing_index(
+                    index_name=settings.pinecone_index_name,
+                    embedding=self.embeddings
+                )
+                logger.info("Pinecone vector store initialized")
+            except Exception as e:
+                logger.warning(f"Failed to initialize vector store: {e}")
+                self.vector_store = None
     
     async def generate_response(
         self,
