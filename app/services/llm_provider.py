@@ -4,8 +4,12 @@ LLM Provider - Supports OpenAI, Ollama, Groq, and other providers
 from typing import Dict, Any, Optional
 import os
 import httpx
+from dotenv import load_dotenv
 from ..config import settings
 from ..utils.logging import get_logger
+
+# Load environment variables
+load_dotenv()
 
 logger = get_logger(__name__)
 
