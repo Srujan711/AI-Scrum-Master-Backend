@@ -26,10 +26,18 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = 30
     
     # AI & LLM Configuration
-    openai_api_key: str = Field(env="OPENAI_API_KEY")
+    llm_provider: str = Field(default="openai", env="LLM_PROVIDER")  # openai or ollama
+    
+    # OpenAI Configuration (legacy/optional)
+    openai_api_key: str = Field(default="not-needed", env="OPENAI_API_KEY")
     openai_model: str = Field(default="gpt-4", env="OPENAI_MODEL")
     openai_temperature: float = Field(default=0.3, env="OPENAI_TEMPERATURE")
     max_tokens: int = Field(default=2000, env="MAX_TOKENS")
+    
+    # Ollama Configuration
+    ollama_base_url: str = Field(default="http://localhost:11434", env="OLLAMA_BASE_URL")
+    ollama_model: str = Field(default="llama3.2", env="OLLAMA_MODEL")
+    ollama_temperature: float = Field(default=0.3, env="OLLAMA_TEMPERATURE")
     
     # Vector Database
     vector_db_provider: str = Field(default="pinecone", env="VECTOR_DB_PROVIDER")  # pinecone, weaviate, chroma

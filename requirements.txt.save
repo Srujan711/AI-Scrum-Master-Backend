@@ -1,0 +1,53 @@
+# FastAPI Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.13.0
+aiosqlite==0.19.0  # For SQLite async support
+asyncpg==0.29.0  # For PostgreSQL async support
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+pydantic-settings==2.1.0
+
+# AI & LLM - Using latest compatible versions
+openai>=1.10.0
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.20
+tiktoken>=0.5.2
+
+# Vector Databases (Optional - skip for now)
+# pinecone-client==2.2.4
+# chromadb==0.4.18
+
+# Data Processing
+pydantic==2.5.2
+python-dateutil==2.8.2
+
+# HTTP & API Clients
+httpx==0.25.2
+aiohttp==3.9.1
+
+# Caching & Task Queue (Optional)
+redis==5.0.1
+celery==5.3.4
+
+# External Integrations
+jira==3.5.2
+PyGithub==2.1.1
+slack-sdk==3.26.1
+
+# Utilities
+python-json-logger==2.0.7
+pytz==2023.3greenlet>=2.0.0
+sqlalchemy[asyncio]>=2.0.0
+asyncpg>=0.29.0
+psycopg2-binary>=2.9.0
+pydantic-settings>=2.0.0
+langchain-community>=0.0.20
